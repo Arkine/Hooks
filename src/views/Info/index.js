@@ -5,19 +5,11 @@ import {fadeFromTop} from '../../services/animations'
 import {Info} from './styled'
 
 export default props => {
-	const [mounted, setMountedState] = useState(false)
-
-	useEffect(() => {
-		setMountedState(true)
-
-		return () => setMountedState(false)
-	})
-
 	return (
 		<Transition
           unmountOnExit
-		  in={mounted}
-		  {...fadeFromTop({mounted})}
+		  in={props.loaded}
+		  {...fadeFromTop({mounted: props.loaded})}
         >
 			<Info>
 				<Info.Header>

@@ -9,6 +9,8 @@ export default props => {
 
 	function setLoaded() {
 		setLoadedState(true)
+
+		props.onImageLoaded()
 	}
 
 	return (
