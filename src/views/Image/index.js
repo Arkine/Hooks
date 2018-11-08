@@ -12,9 +12,9 @@ export default props => {
 	}
 
 	return (
-		<React.Fragment>
+		<Image>
+			<Image.Img src={props.image} onLoad={setLoaded} loaded={loaded} />
 			{(!props.image || !loaded) && <Loading />}
-			<Image src={props.image} onLoad={setLoaded} loaded={loaded} />
-		</React.Fragment>
+		</Image>
 	)
 }

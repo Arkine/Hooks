@@ -41,10 +41,6 @@ export default function() {
 		)
 	}
 
-	function renderLoading() {
-		return <Loading />
-	}
-
 	useEffect(() => {
 		setLoadingState(true)
 	}, [loaded])
@@ -52,7 +48,6 @@ export default function() {
 	return (
 		<ThemeProvider theme={theme}>
 			<React.Fragment>
-			{!loaded && renderLoading()}
 			{loaded && renderApp()}
 			</React.Fragment>
 		</ThemeProvider>
