@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Loading = styled.div`
-	height: 100%;
-	width: 100%;
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
 
 	background-color: blue;
 `

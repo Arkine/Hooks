@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Router, Switch, Route} from 'react-router-dom'
 import {ThemeProvider} from 'styled-components'
 
@@ -9,7 +9,8 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Loading from '../../components/Loading'
 
-import {App} from './styled';
+import {App} from './styled'
+import GlobalStyles from './globalStyles'
 import theme from '../../services/theme'
 
 // import Home from '../Home'
@@ -19,15 +20,28 @@ const AsyncHome = AsyncComponent({
 })
 
 export default function() {
+	const [loaded, setLoadingState] = useState(false)
+
+	useEffect(() => {
+		setLoadingState(true)
+	}, [loaded])
+
+	if (!loaded) {
+		return (<Loading />)
+	}
+
 	return (
 		<ThemeProvider theme={theme}>
 			<Router history={history}>
 				<App>
-					<Header />
-					<Switch>
-						<Route exact path='/' component={AsyncHome} />
-					</Switch>
-					<Footer />
+					<GlobalStyles />
+					<App.Body>
+						<Header />
+						<Switch>
+							<Route exact path='/' component={AsyncHome} />
+						</Switch>
+						<Footer />
+					</App.Body>
 				</App>
 			</Router>
 		</ThemeProvider>
