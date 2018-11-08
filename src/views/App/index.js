@@ -9,15 +9,18 @@ import Footer from '../../components/Footer'
 import Loading from '../../components/Loading'
 
 // import Home from '../Home'
-const AsyncHome = AsyncComponent(() => import('../Home'))
+const AsyncHome = AsyncComponent({
+	importComponent:  () => import('../Home'),
+	loading: <Loading />
+})
 
-export default function App() {
+export default function() {
 	return (
 		<Router history={history}>
 			<main>
 				<Header />
 				<Switch>
-					<Route exact path='/' component={AsyncHome} fallback={Loading} />
+					<Route exact path='/' component={AsyncHome} />
 				</Switch>
 				<Footer />
 			</main>

@@ -1,15 +1,29 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 
-export default importComponent => props => {
-	const [component, setComponent] = useState({})
+export default ({importComponent, fallback}) => (
+	class AsyncComponent extends React.Component {
+		constructor(props) {
+			super(props)
 
-	useEffect( async () => {
-		const {default: component} = await importComponent()
-		console.log(component)
-		setComponent(component)
-	})
+			this.state = {
+				component: null
+			}
+		}
 
-	const C = component;
+		async componentDidMount() {
+			const {default: component} = await importComponent()
 
-	return C ? <C {...props} /> : props.fallback
-}
+			this.setState({
+				component,
+			})
+		}
+
+		render() {
+			console.log(this.props)
+			const C = this.state.component
+			const L = fallback ? fallback : null
+
+			return C ? <C {...this.props} /> : L
+		}
+	}
+)
