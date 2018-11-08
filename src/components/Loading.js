@@ -22,6 +22,7 @@ const Letter = styled.span`
 	font-size: 3rem;
 	opacity: 0;
 	color: #fff;
+	letter-spacing: 1rem;
 `
 
 export default () => {
@@ -35,8 +36,7 @@ export default () => {
 	}
 
 	useEffect(() => {
-		tl
-			.staggerTo(letters, 3, {y: -20, autoAlpha: 1},0)
+		tl.staggerTo(letters, 3, {y: -20, autoAlpha: 1}, 0.1)
 	})
 
 	return (

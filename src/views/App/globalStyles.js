@@ -9,6 +9,7 @@ export default createGlobalStyle`
 	}
 	html, body, #root {
 		height: 100%
+		font-family: Roboto, sans-serrif;
 	}
 
 	body {
@@ -17,5 +18,9 @@ export default createGlobalStyle`
 
 	a {
 		color ${props => props.theme.colors.blue}
+	}
+
+	p {
+		line-height: 1.2;
 	}
 `
