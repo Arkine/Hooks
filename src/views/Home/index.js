@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
 import ImageView from '../Image'
+import Sidebar from '../../components/Sidebar'
 
 import Fetcher from '../../api/Nasa/Fetcher'
 
@@ -22,8 +23,15 @@ export default () => {
 
 	return (
 		<Home>
-			{error && <span>{error}</span>}
-			{!error && <ImageView image={'https://apod.nasa.gov/apod/image/1811/Ma2018La_tezelN1024.jpg'} /> }
+			<Home.Content>
+				{error && <span>{error}</span>}
+				{!error &&
+					<React.Fragment>
+						<ImageView image={'https://apod.nasa.gov/apod/image/1811/Ma2018La_tezelN1024.jpg'} />
+						<Sidebar>Sidebar</Sidebar>
+					</React.Fragment>
+				}
+			</Home.Content>
 		</Home>
 	)
 }

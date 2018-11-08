@@ -10,3 +10,10 @@ export const Home = styled.div`
 	width: 100%;
 	flex-grow: 1;
 `
+
+Home.Content = styled.div`
+	display: flex;
+	flex-flow: row wrap;
+
+	flex-grow: 1;
+`

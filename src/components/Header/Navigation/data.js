@@ -3,10 +3,6 @@ export default {
 		{
 			label: 'home',
 			slug: '/'
-		},
-		{
-			label: 'explore',
-			slug: '/explore'
 		}
 	]
 }

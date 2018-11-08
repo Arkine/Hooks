@@ -26,7 +26,7 @@ const Letter = styled.span`
 
 export default () => {
 	const letters = []
-	const tl = new TimelineMax({repeat: -1})
+	const tl = new TimelineMax()
 
 	function renderLoadingContent() {
 		const word = 'LOADING...';
