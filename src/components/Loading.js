@@ -27,7 +27,7 @@ const Letter = styled.span`
 
 export default () => {
 	const letters = []
-	const tl = new TimelineMax()
+	const tl = new TimelineMax({repeat: -1})
 
 	function renderLoadingContent() {
 		const word = 'LOADING...';
@@ -36,7 +36,9 @@ export default () => {
 	}
 
 	useEffect(() => {
-		tl.staggerTo(letters, 3, {y: -20, autoAlpha: 1}, 0.1)
+		tl
+			.staggerTo(letters, 0.75, { autoAlpha: 1 }, 0.1)
+			.staggerTo(letters, 0.75, { autoAlpha: 0 }, 0.1)
 	})
 
 	return (
