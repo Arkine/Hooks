@@ -19,9 +19,9 @@ export default ({importComponent, fallback}) => (
 		}
 
 		render() {
-			console.log(this.props)
+			const {fallback: Fallback} = this.props
 			const C = this.state.component
-			const L = fallback ? fallback : null
+			const L = Fallback ? <Fallback {...this.props} /> : null
 
 			return C ? <C {...this.props} /> : L
 		}

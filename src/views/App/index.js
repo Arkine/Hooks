@@ -16,34 +16,45 @@ import theme from '../../services/theme'
 // import Home from '../Home'
 const AsyncHome = AsyncComponent({
 	importComponent:  () => import('../Home'),
-	loading: <Loading />
+	loading: Loading
 })
 
 export default function() {
 	const [loaded, setLoadingState] = useState(false)
 
-	useEffect(() => {
-		setLoadingState(true)
-	}, [loaded])
-
-	if (!loaded) {
-		return (<Loading />)
-	}
-
-	return (
-		<ThemeProvider theme={theme}>
+	function renderApp() {
+		return (
 			<Router history={history}>
 				<App>
 					<GlobalStyles />
 					<App.Body>
 						<Header />
-						<Switch>
-							<Route exact path='/' component={AsyncHome} />
-						</Switch>
+						<App.Content>
+							<Switch>
+								<Route path='/' component={AsyncHome} />
+							</Switch>
+						</App.Content>
 						<Footer />
 					</App.Body>
 				</App>
 			</Router>
+		)
+	}
+
+	function renderLoading() {
+		return <Loading />
+	}
+
+	useEffect(() => {
+		setLoadingState(true)
+	}, [loaded])
+
+	return (
+		<ThemeProvider theme={theme}>
+			<React.Fragment>
+			{!loaded && renderLoading()}
+			{loaded && renderApp()}
+			</React.Fragment>
 		</ThemeProvider>
-	);
+	)
 }

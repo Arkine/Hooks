@@ -2,7 +2,7 @@ import React from 'react'
 
 import {Navigation} from './styled'
 
-export default function(props) {
+export default props => {
 	function handleClick() {
 		props.onClick(props.index)
 	}

@@ -1,6 +1,7 @@
 export default {
 	colors: {
-		red: 'red'
+		red: 'red',
+		charcoal: '#333',
+		blue: '#466bc5'
 	},
-	rowWidth: '70rem',
 }

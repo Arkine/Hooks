@@ -7,13 +7,21 @@ export const App = styled.main`
 	align-items: center;
 
 	height: 100%;
-	border: 1px solid yellow;
 `
 
 App.Body = styled.div`
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
 	flex-grow: 1;
 	max-width: ${props => props.theme.rowWidth};
 	width: 100%;
-	border: 1px solid green;
+`
+
+App.Content = styled.div`
+	display: flex;
+	flex-direction: column;
+
 	flex-grow: 1;
 `

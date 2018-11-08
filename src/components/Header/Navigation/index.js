@@ -5,7 +5,7 @@ import data from './data'
 
 import {Navigation} from './styled'
 
-export default function(){
+export default () => {
 	const [activeIndex, setActiveIndex] = useState(0)
 
 	function handleNavItemClick(index) {

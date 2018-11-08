@@ -2,7 +2,7 @@ export default {
 	navItems: [
 		{
 			label: 'home',
-			slug: '/home'
+			slug: '/'
 		},
 		{
 			label: 'explore',

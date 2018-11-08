@@ -2,7 +2,7 @@ import React from 'react'
 import { Header } from './styled'
 import Navigation from '../Header/Navigation'
 
-export default function() {
+export default () => {
 	return (
 		<Header>
 			<Navigation />
