@@ -1,11 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
 
-const NavItem = styled(NavLink)``
+import {Navigation} from './styled'
 
 export default function(props) {
+	function handleClick() {
+		props.onClick(props.index)
+	}
+
 	return (
-		<NavItem to={props.to}>{props.label}</NavItem>
+		<Navigation.NavItem to={props.to} active={props.active} onClick={handleClick}>{props.label}</Navigation.NavItem>
 	)
 }
