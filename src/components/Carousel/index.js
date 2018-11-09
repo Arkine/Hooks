@@ -7,7 +7,7 @@ import Viewport from './Viewport'
 export default props => {
 	const [activeIndex, setActiveIndex] = useState(0)
 
-	function scrollLeft() {
+	function scrollRight() {
 		let next = activeIndex + 1;
 		if (next > props.children.length - 1) {
 			next = 0
@@ -15,7 +15,7 @@ export default props => {
 		setActiveIndex(next)
 	}
 
-	function scrollRight() {
+	function scrollLeft() {
 		let next = activeIndex - 1
 		if (next < 0) {
 			next = props.children.length - 1
@@ -33,11 +33,12 @@ export default props => {
 		))
 	}
 
+
 	return (
 		<React.Fragment>
 			<Controls onPrevClick={scrollLeft} onNextClick={scrollRight} />
 			<Carousel>
-				<Viewport activeIndex={activeIndex} offset={(1900) * activeIndex}>
+				<Viewport activeIndex={activeIndex} offset={(1900) * -activeIndex}>
 					{renderChildren()}
 				</Viewport>
 			</Carousel>

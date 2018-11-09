@@ -3,7 +3,7 @@ import { Carousel } from './styled';
 
 export default props => {
 	return (
-		<Carousel.Viewport offset={props.offset}>
+		<Carousel.Viewport offset={props.offset} >
 			{props.children}
 		</Carousel.Viewport>
 	)
