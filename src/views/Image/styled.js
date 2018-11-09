@@ -9,8 +9,8 @@ export const Image = styled.div`
 	width: 100%;
 
 	flex-basis: 30rem;
-	transition: .5s all ease;
-	transform: rotateX(${props => props.view ? 0 : '60deg'}) scale(${props => props.view ? 1 : '0.7'}) translateY(${props => props.view ? 0 : '50%' });
+	transition: 1.5s all ease;
+	transform: rotateX(${props => props.view ? 0 : '60deg'}) scale(${props => props.view ? 1 : '0.7'}) translateY(${props => props.view ? 0 : !props.active ? '200%' : '50%' });
 
 	box-shadow: 0px 20px ${props => props.loaded ? '50px': 0 } #555;
 
