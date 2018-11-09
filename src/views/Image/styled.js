@@ -10,7 +10,7 @@ export const Image = styled.div`
 
 	flex-basis: 30rem;
 	transition: .5s all ease;
-	transform: rotateX(60deg) scale(0.7);
+	transform: rotateX(${props => props.view ? 0 : '60deg'}) scale(${props => props.view ? 1 : '0.7'});
 
 	box-shadow: 0px 20px 50px #555;
 	border: 1px solid blue;

@@ -10,6 +10,7 @@ export default props => {
 	const [loaded, setLoaded] = useState(false)
 	const [image, setImage] = useState(null)
 	const [error, setError] = useState(null)
+	const [viewImage, setImageView] = useState(false)
 
 	console.log({active: props.active})
 
@@ -27,7 +28,7 @@ export default props => {
 			return renderError()
 		}
 
-		return <Image.Img src={image.url} onLoad={setLoaded} onError={setError} loaded={loaded} />
+		return <Image.Img src={image.url} onLoad={() => setLoaded(true)} onError={setError} loaded={loaded} />
 	}
 
 	useEffect(async () => {
@@ -46,7 +47,7 @@ export default props => {
 	return (
 		<React.Fragment>
 			{image && <Info info={image} loaded={loaded} />}
-			<Image {...props}>
+			<Image {...props} onClick={() => setImageView(!viewImage)} view={viewImage}>
 				{renderImage()}
 				<Loading isLoading={!loaded} />
 			</Image>

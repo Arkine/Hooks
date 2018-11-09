@@ -15,7 +15,7 @@ export default props => {
 		tl
 			.staggerFromTo(header, 4, {left: -200, autoAlpha: 0}, {left: 0, autoAlpha: 1}, 0.1)
 	})
-
+	console.log(props)
 	return (
 		<Transition
           unmountOnExit

@@ -6,7 +6,9 @@ export default createGlobalStyle`
 
 	html {
 		font-size: 16px;
+		color: #fff;
 	}
+
 	html, body, #root {
 		height: 100%
 		font-family: Roboto, sans-serrif;

@@ -20,7 +20,6 @@ export default props => {
 			React.cloneElement(child, {
 				...child.props,
 				active: i === activeIndex,
-				onClick: () => setActiveIndex(i),
 				activeIndex
 			})
 		))
