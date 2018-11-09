@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import ImageView from '../Image'
 
 import {Home} from './styled'
+import { Carousel } from '../../components/Carousel/styled';
 
 export default () => {
 	const [modalActive, setModalActive] = useState(false)
@@ -20,7 +21,9 @@ export default () => {
 		<Home>
 			<Home.Content>
 				<Home.Images>
-				{dates.map(date => <ImageView date={date} />)}
+					<Carousel>
+						{dates.map((date, i) => <ImageView key={`image-view-${i}`} active={activeImage === i} date={date} />)}
+					</Carousel>
 				</Home.Images>
 			</Home.Content>
 		</Home>

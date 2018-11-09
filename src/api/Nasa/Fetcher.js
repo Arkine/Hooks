@@ -34,7 +34,7 @@ class Fecther {
 		for (const key in query) {
 			const data = encodeURI(query[key]);
 
-			url += `?${key}=${data}`
+			url += `&${key}=${data}`
 		}
 
 		try {

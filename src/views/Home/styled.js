@@ -35,5 +35,5 @@ Home.Button = styled(Button)`
 `
 
 Home.Images = styled.div`
-  	
+
 `
