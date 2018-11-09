@@ -1,22 +1,30 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
-import Loading from '../../components/Loading'
+import Fetcher from '../../api/Nasa/Fetcher'
+import Loading from '../../components/Loading/BouncingText'
 
 import {Image} from './styled'
 
 export default props => {
-	const [loaded, setLoadedState] = useState(false)
+	const [loaded, setLoaded] = useState(false)
+	const [image, setImage] = useState(null)
+	
+	useEffect(async () => {
+		try {
+			const image = await Fetcher.getByDate(props.date);
 
-	function setLoaded() {
-		setLoadedState(true)
+			setImage(image)
+		} catch(e) {
+			// setError(e.message)
+		}
 
-		props.onImageLoaded()
-	}
+		setLoaded(true)
+	}, [image])
 
 	return (
-		<Image>
+		<Image {...props}>
 			<Image.Img src={props.image} onLoad={setLoaded} loaded={loaded} />
-			{(!props.image || !loaded) && <Loading />}
+			<Loading isLoading={!loaded} />
 		</Image>
 	)
 }

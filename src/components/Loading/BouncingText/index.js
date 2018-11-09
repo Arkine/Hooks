@@ -1,31 +1,9 @@
 import React, {useEffect} from 'react'
-import styled from 'styled-components'
 import {TimelineMax} from 'gsap'
 
-const Loading = styled.div`
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 999;
+import {Loading, Letter} from './styled'
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	height: 100vh;
-	width: 100vw;
-
-	background-color: ${props => props.theme.colors.charcoal};
-`
-
-const Letter = styled.span`
-	font-size: 3rem;
-	opacity: 0;
-	color: #fff;
-	letter-spacing: 1rem;
-`
-
-export default () => {
+export default props => {
 	const letters = []
 	const tl = new TimelineMax({repeat: -1})
 
@@ -42,7 +20,7 @@ export default () => {
 	})
 
 	return (
-		<Loading>
+		<Loading isLoading={props.isLoading}>
 			{renderLoadingContent()}
 		</Loading>
 	)

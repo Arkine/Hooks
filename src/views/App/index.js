@@ -5,18 +5,13 @@ import {ThemeProvider} from 'styled-components'
 import history from '../../services/history'
 import AsyncComponent from '../../components/AsyncComponent';
 
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import Loading from '../../components/Loading'
-
 import {App} from './styled'
 import GlobalStyles from './globalStyles'
 import theme from '../../services/theme'
 
 // import Home from '../Home'
 const AsyncHome = AsyncComponent({
-	importComponent:  () => import('../Home'),
-	loading: Loading
+	importComponent:  () => import('../Home')
 })
 
 export default function() {
@@ -28,13 +23,11 @@ export default function() {
 				<App>
 					<GlobalStyles />
 					<App.Body>
-						<Header />
 						<App.Content>
 							<Switch>
 								<Route path='/' component={AsyncHome} />
 							</Switch>
 						</App.Content>
-						<Footer />
 					</App.Body>
 				</App>
 			</Router>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Button from '../../components/Button'
 
 export const Home = styled.div`
 	display: flex;
@@ -12,8 +13,27 @@ export const Home = styled.div`
 `
 
 Home.Content = styled.div`
-	display: flex;
+	${'' /* display: flex; */}
 	flex-flow: row wrap;
 
 	flex-grow: 1;
+	perspective: 900px;
+`
+
+Home.Button = styled(Button)`
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	z-index: 20;
+
+	border: 1px solid #fff;
+	border-radius: 4px;
+
+	&:hover {
+		cursor: pointer;
+	}
+`
+
+Home.Images = styled.div`
+  	
 `

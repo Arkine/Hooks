@@ -13,7 +13,7 @@ export default createGlobalStyle`
 	}
 
 	body {
-
+		background-color: ${props => props.theme.colors.charcoal};
 	}
 
 	a {
