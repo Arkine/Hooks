@@ -16,7 +16,7 @@ export default createGlobalStyle`
 
 	body {
 		background-color: black;
-		background: linear-gradient(to bottom, #7d7e7d 0%, #0e0e0e 65%);
+		background: linear-gradient(to bottom, ${props => props.theme.colors.charcoal} 0%, #0e0e0e 60%);
 	}
 
 	a {
