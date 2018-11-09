@@ -19,8 +19,9 @@ export const Loading = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	height: 100vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
+	max-width: 100%;
 
 	background-color: ${props => props.theme.colors.charcoal};
 	visibility: ${props => props.isLoading ? 'visible' : 'hidden'};

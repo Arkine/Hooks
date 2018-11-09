@@ -13,11 +13,7 @@ export const Home = styled.div`
 `
 
 Home.Content = styled.div`
-	${'' /* display: flex; */}
-	flex-flow: row wrap;
-
 	flex-grow: 1;
-	perspective: 900px;
 `
 
 Home.Button = styled(Button)`

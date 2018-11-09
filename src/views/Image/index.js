@@ -11,11 +11,14 @@ export default props => {
 	const [image, setImage] = useState(null)
 	const [error, setError] = useState(null)
 
+	console.log({active: props.active})
+
 	function renderError() {
 		return <Image.Error>{error}</Image.Error>
 	}
 
 	function renderImage() {
+		console.log('GOT IMAGE', image)
 		if (!image) {
 			return
 		}
@@ -24,16 +27,11 @@ export default props => {
 			return renderError()
 		}
 
-		return (
-			<React.Fragment>
-				<Info info={image} />
-				<Image.Img src={props.image} onLoad={setLoaded} onError={setError} loaded={loaded} />
-			</React.Fragment>
-		)
+		return <Image.Img src={image.url} onLoad={setLoaded} onError={setError} loaded={loaded} />
 	}
 
 	useEffect(async () => {
-		if (props.active) {
+		if (props.active && !loaded) {
 			try {
 				const image = await Fetcher.getByDate(props.date);
 
@@ -46,9 +44,12 @@ export default props => {
 	}, [])
 
 	return (
-		<Image {...props}>
-			{renderImage()}
-			<Loading isLoading={!loaded} />
-		</Image>
+		<React.Fragment>
+			{image && <Info info={image} loaded={loaded} />}
+			<Image {...props}>
+				{renderImage()}
+				<Loading isLoading={!loaded} />
+			</Image>
+		</React.Fragment>
 	)
 }

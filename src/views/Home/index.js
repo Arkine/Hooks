@@ -1,14 +1,11 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 import ImageView from '../Image'
 
 import {Home} from './styled'
-import { Carousel } from '../../components/Carousel/styled';
+import Carousel from '../../components/Carousel';
 
 export default () => {
-	const [modalActive, setModalActive] = useState(false)
-	const [activeImage, setActiveImage] = useState(0)
-
 	const dates = [
 		'2018-11-06',
 		'2018-11-05',
@@ -22,7 +19,7 @@ export default () => {
 			<Home.Content>
 				<Home.Images>
 					<Carousel>
-						{dates.map((date, i) => <ImageView key={`image-view-${i}`} active={activeImage === i} date={date} />)}
+						{dates.map((date, i) => <ImageView key={`image-view-${i}`} date={date} />)}
 					</Carousel>
 				</Home.Images>
 			</Home.Content>
