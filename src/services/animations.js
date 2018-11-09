@@ -10,12 +10,13 @@ export const fadeFromTop = props => ({
   timeout: 1000,
   onEnter: node => TweenMax.set(node, { autoAlpha: 0, y: -50 }),
   addEndListener: (node, done) => {
-    TweenMax.to(node, 0.5, {
+    TweenMax.to(node, props.duration || 0.75, {
       autoAlpha: props.mounted ? 1 : 0,
       y: props.mounted ? 0 : 50,
       onComplete: done
     })
-  }
+  },
+  ...props
 })
 
 /**
@@ -29,10 +30,11 @@ export const fadeFromLeft = props => ({
   timeOut: 1000,
   onEnter: node => TweenMax.set(node, {autoAlpha: 0, x: -50}),
   addEndListener: (node, done) => {
-    TweenMax.to(node, 0.75, {
+    TweenMax.to(node, props.duration || 0.75, {
       autoAlpha: props.mounted ? 1 : 0,
       x: props.mounted ? 0 : 50,
       onComplete: done
     })
-  }
+  },
+  ...props
 })

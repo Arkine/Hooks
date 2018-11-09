@@ -5,8 +5,8 @@ import {Carousel} from './styled'
 export default props => {
 	return (
 		<Carousel.Controls>
-			<button onClick={props.onPrevClick}>Prev</button>
-			<button onClick={props.onNextClick}>Next</button>
+			<Carousel.Control_Left onClick={props.onPrevClick}>Prev</Carousel.Control_Left>
+			<Carousel.Control_Right onClick={props.onNextClick}>Next</Carousel.Control_Right>
 		</Carousel.Controls>
 	)
 }

@@ -10,8 +10,6 @@ export const Carousel = styled.div`
 
 	height: 100%;
 	width: 100%;
-
-	border: 1px solid red;
 `
 
 Carousel.Viewport = styled.div`
@@ -27,5 +25,19 @@ Carousel.Viewport = styled.div`
 `
 
 Carousel.Controls = styled.div`
+	z-index: 30;
+`
+
+Carousel.Control = styled.div`
 	position: absolute;
+	top: 50%;
+	z-index: 30;
+`
+
+Carousel.Control_Left = styled(Carousel.Control)`
+	left: 1rem;
+`
+
+Carousel.Control_Right = styled(Carousel.Control)`
+	right: 1rem;
 `

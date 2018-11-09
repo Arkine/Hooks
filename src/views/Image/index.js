@@ -47,7 +47,7 @@ export default props => {
 	return (
 		<React.Fragment>
 			{image && <Info info={image} loaded={loaded} />}
-			<Image {...props} onClick={() => setImageView(!viewImage)} view={viewImage}>
+			<Image {...props} onClick={() => setImageView(!viewImage)} view={viewImage} loaded={loaded} active={props.active}>
 				{renderImage()}
 				<Loading isLoading={!loaded} />
 			</Image>

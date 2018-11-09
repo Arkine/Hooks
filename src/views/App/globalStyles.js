@@ -23,6 +23,6 @@ export default createGlobalStyle`
 	}
 
 	p {
-		line-height: 1.6;
+		line-height: 1.8;
 	}
 `

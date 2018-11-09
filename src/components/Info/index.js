@@ -15,12 +15,12 @@ export default props => {
 		tl
 			.staggerFromTo(header, 4, {left: -200, autoAlpha: 0}, {left: 0, autoAlpha: 1}, 0.1)
 	})
-	console.log(props)
+
 	return (
 		<Transition
           unmountOnExit
 		  in={props.loaded}
-		  {...fadeFromTop({mounted: props.loaded})}
+		  {...fadeFromTop({mounted: props.loaded, duration: 1.25})}
         >
 			<Info>
 				<Info.Header ref={el => header = el}>

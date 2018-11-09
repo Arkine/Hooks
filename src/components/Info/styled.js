@@ -7,6 +7,14 @@ export const Info = styled.div`
 	transform: translateX(-50%);
 
 	max-width: 70vw;
+	max-height: 425px;
+	height: 100%;
+
+	overflow: scroll;
+
+	opacity: ${props => props.view ? 0 : 1};
+
+	transition: opacity: 0.75s ease-in-out;
 `
 
 Info.Header = styled.div`

@@ -23,7 +23,7 @@ export const Loading = styled.div`
 	width: 100%;
 	max-width: 100%;
 
-	background-color: ${props => props.theme.colors.charcoal};
+
 	visibility: ${props => props.isLoading ? 'visible' : 'hidden'};
 	transform: visibility 0.5s  ease-in-out;
     animation: ${props => props.isLoading ? fadeIn : fadeOut} 0.5s ease-in-out;

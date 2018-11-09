@@ -8,11 +8,19 @@ export default props => {
 	const [activeIndex, setActiveIndex] = useState(0)
 
 	function scrollLeft() {
-		setActiveIndex(activeIndex + 1)
+		let next = activeIndex + 1;
+		if (next > props.children.length - 1) {
+			next = 0
+		}
+		setActiveIndex(next)
 	}
 
 	function scrollRight() {
-		setActiveIndex(activeIndex - 1)
+		let next = activeIndex - 1
+		if (next < 0) {
+			next = props.children.length - 1
+		}
+		setActiveIndex(next)
 	}
 
 	function renderChildren() {
@@ -26,11 +34,13 @@ export default props => {
 	}
 
 	return (
-		<Carousel>
+		<React.Fragment>
 			<Controls onPrevClick={scrollLeft} onNextClick={scrollRight} />
-			<Viewport activeIndex={activeIndex} offset={(1830) * activeIndex}>
-				{renderChildren()}
-			</Viewport>
-		</Carousel>
+			<Carousel>
+				<Viewport activeIndex={activeIndex} offset={(1900) * activeIndex}>
+					{renderChildren()}
+				</Viewport>
+			</Carousel>
+		</React.Fragment>
 	)
 }

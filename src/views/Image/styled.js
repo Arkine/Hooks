@@ -10,10 +10,13 @@ export const Image = styled.div`
 
 	flex-basis: 30rem;
 	transition: .5s all ease;
-	transform: rotateX(${props => props.view ? 0 : '60deg'}) scale(${props => props.view ? 1 : '0.7'});
+	transform: rotateX(${props => props.view ? 0 : '60deg'}) scale(${props => props.view ? 1 : '0.7'}) translateY(${props => props.view ? 0 : '50%' });
 
-	box-shadow: 0px 20px 50px #555;
-	border: 1px solid blue;
+	box-shadow: 0px 20px ${props => props.loaded ? '50px': 0 } #555;
+
+	&:hover {
+		cursor: pointer;
+	}
 `
 
 Image.Img = styled.img`
