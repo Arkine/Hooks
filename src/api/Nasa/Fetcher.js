@@ -9,6 +9,16 @@ class Fecther {
 			url
 		}
 	}
+
+	getByDate(date) {
+		const fetchOptions = {
+			method: 'GET',
+			...this.state.fetchOptions
+		}
+
+		return this.fetch(fetchOptions, {date})
+	}
+
 	get() {
 		const fetchOptions = {
 			method: 'GET',
@@ -18,9 +28,17 @@ class Fecther {
 		return this.fetch(fetchOptions)
 	}
 
-	async fetch(options) {
+	async fetch(options, query = {}) {
+		let url = `${this.state.url}?api_key=${config.key}`
+
+		for (const key in query) {
+			const data = encodeURI(query[key]);
+
+			url += `?${key}=${data}`
+		}
+
 		try {
-			const response = await fetch(`${this.state.url}?api_key=${config.key}`, options)
+			const response = await fetch(url, options)
 
 			if (!response.ok) {
 				throw(new Error(response.statusText))

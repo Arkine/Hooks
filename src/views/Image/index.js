@@ -18,7 +18,7 @@ export default props => {
 			// setError(e.message)
 		}
 
-		setLoaded(true)
+		// setLoaded(true)
 	}, [image])
 
 	return (
