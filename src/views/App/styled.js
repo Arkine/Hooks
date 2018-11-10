@@ -15,7 +15,6 @@ App.Body = styled.div`
 	flex-direction: column;
 
 	flex-grow: 1;
-	max-width: ${props => props.theme.rowWidth};
 	width: 100%;
 `
 

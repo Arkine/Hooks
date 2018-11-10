@@ -7,7 +7,7 @@ export const Info = styled.div`
 	transform: translateX(-50%);
 
 	max-width: 70vw;
-	max-height: 425px;
+	max-height: 300px;
 	height: 100%;
 
 	overflow: scroll;

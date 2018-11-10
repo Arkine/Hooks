@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
-import { Carousel } from './styled'
 
 import Controls from './Controls'
 import Viewport from './Viewport'
+import useWindowWidth from '../hooks/useWindowWidth'
+
+import { Carousel } from './styled'
 
 export default props => {
 	const [activeIndex, setActiveIndex] = useState(0)
+	const [width, setWindowWidth] = useWindowWidth()
 
 	function scrollRight() {
 		let next = activeIndex + 1;
@@ -24,21 +27,23 @@ export default props => {
 	}
 
 	function renderChildren() {
-		return React.Children.map(props.children, (child, i) => (
-			React.cloneElement(child, {
+		return React.Children.map(props.children, (child, i) => {
+			console.log('index', i)
+			return  (
+				React.cloneElement(child, {
 				...child.props,
 				active: i === activeIndex,
-				activeIndex
-			})
-		))
+				activeIndex,
+				myIndex: i
+			}))
+		})
 	}
-
 
 	return (
 		<React.Fragment>
 			<Controls onPrevClick={scrollLeft} onNextClick={scrollRight} />
 			<Carousel>
-				<Viewport activeIndex={activeIndex} offset={(1900) * -activeIndex}>
+				<Viewport activeIndex={activeIndex} offset={(width) * -activeIndex}>
 					{renderChildren()}
 				</Viewport>
 			</Carousel>

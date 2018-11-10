@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import Fetcher from '../../api/Nasa/Fetcher'
 import Loading from '../../components/Loading/BouncingText'
 import Info from '../../components/Info'
+import useWindowWidth from '../../components/hooks/useWindowWidth'
 
 import {Image} from './styled'
 
@@ -11,8 +12,7 @@ export default props => {
 	const [image, setImage] = useState(null)
 	const [error, setError] = useState(null)
 	const [viewImage, setImageView] = useState(false)
-
-	console.log({active: props.active})
+	const [width, setWindowWidth] = useWindowWidth()
 
 	function renderError() {
 		return <Image.Error>{error}</Image.Error>
@@ -42,15 +42,17 @@ export default props => {
 				setLoaded(true)
 			}
 		}
-	}, [])
+	})
+
+	console.log({props})
 
 	return (
-		<React.Fragment>
+		<Image.Container width={width}>
 			{image && <Info info={image} loaded={loaded} />}
 			<Image {...props} onClick={() => setImageView(!viewImage)} view={viewImage} loaded={loaded} active={props.active}>
 				{renderImage()}
-				<Loading isLoading={!loaded} />
 			</Image>
-		</React.Fragment>
+			<Loading isLoading={!loaded} />
+		</Image.Container>
 	)
 }

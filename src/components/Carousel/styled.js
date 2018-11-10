@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons'
 
 export const Carousel = styled.div`
-	position: absolute;
+	position: relative;
 
 	display: flex;
 	flex-flow: row nowrap;
@@ -15,15 +15,27 @@ export const Carousel = styled.div`
 `
 
 Carousel.Viewport = styled.div`
+	position: relative;
 
 	height: 100%;
-	width: auto;
+	width: 100%;
 
 	flex-grow: 1;
 
 	transform: translateX(${props => props.offset}px);
 	transition: all 0.5s ease-in-out;
-	perspective: 900px;
+`
+
+Carousel.Viewport_Items = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	height: 100%;
+
+	display: flex;
+	flex-flow: row nowrap;
+
 `
 
 Carousel.Controls = styled.div`

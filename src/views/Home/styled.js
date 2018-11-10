@@ -31,5 +31,5 @@ Home.Button = styled(Button)`
 `
 
 Home.Images = styled.div`
-
+	height: 100%;
 `
