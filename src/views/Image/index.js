@@ -15,8 +15,8 @@ export default props => {
 	const [width, setWindowWidth] = useWindowWidth()
 
 	function renderError() {
-		console.log('RENDERING ERROR', error)
-		return <Image.Error>There was an error: {error || image.error}</Image.Error>
+		setLoaded(true)
+		return <Image.Error>There was an error: {error || image.error.message}</Image.Error>
 	}
 
 	function handleImageLoad() {
@@ -32,13 +32,11 @@ export default props => {
 			return renderError()
 		}
 
-		console.log('RENDERING Info continued');
-
 		return <Info info={image} loaded={loaded} />
 	}
 
 	function renderImage() {
-		if (!image || error) {
+		if (!image || error || image.error) {
 			return null;
 		}
 		
@@ -66,7 +64,6 @@ export default props => {
 		if (props.active && !loaded) {
 			try {
 				const image = await Fetcher.getByDate(props.date);
-
 				setImage(image)
 			} catch(e) {
 				setError(e || 'Could not load images...')

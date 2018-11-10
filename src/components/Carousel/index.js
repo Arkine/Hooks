@@ -33,8 +33,7 @@ export default props => {
 				React.cloneElement(child, {
 				...child.props,
 				active: i === activeIndex,
-				activeIndex,
-				myIndex: i
+				activeIndex
 			}))
 		})
 	}

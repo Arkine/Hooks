@@ -39,11 +39,13 @@ class Fecther {
 
 		try {
 			const response = await fetch(url, options)
+
+			console.log('response', response)
 			if (!response.ok) {
-				throw(new Error(response.statusText))
+				throw new Error(response.statusText)
 			}
 
-			if (response.statusCode >= 400) {
+			if (response.status >= 400) {
 				throw new Error('There was an error getting images...')
 			}
 
