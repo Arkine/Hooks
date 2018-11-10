@@ -1,4 +1,4 @@
-import config from './config'
+import config from '../../config'
 
 class Fecther {
 	constructor(url = config.url, fetchOptions) {
