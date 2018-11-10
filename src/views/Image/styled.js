@@ -16,6 +16,8 @@ export const Image = styled.div`
 	transform: rotateX(${props => props.view ? 0 : '60deg'}) scale(${props => props.view ? 1 : '0.7'}) translateY(${props => props.view ? 0 : !props.active ? '200%' : '50%' });
 	box-shadow: 0px 20px ${props => props.loaded ? '50px': 0 } #555;
 
+	z-index: ${props => props.view ? 200 : 10};
+
 	&:hover {
 		cursor: pointer;
 	}
