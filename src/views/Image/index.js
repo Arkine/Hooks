@@ -15,7 +15,7 @@ export default props => {
 	const [width, setWindowWidth] = useWindowWidth()
 
 	function renderError() {
-		return <Image.Error>There was an error: {error || image.error.message}</Image.Error>
+		return <Image.Error>{error || image.error.message}</Image.Error>
 	}
 
 	function handleImageLoad() {
