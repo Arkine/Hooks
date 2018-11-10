@@ -24,7 +24,7 @@ export default props => {
 	}
 	
 	function renderInfo() {
-		if (!image) {git 
+		if (!image) {
 			return null
 		}
 
