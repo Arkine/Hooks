@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import Fetcher from '../../api/Nasa/Fetcher'
+import Fetcher from '../../api/nasa/Fetcher'
 import Loading from '../../components/Loading/ShimmeringText'
 import Info from '../../components/Info'
 import useWindowWidth from '../../components/hooks/useWindowWidth'
