@@ -38,4 +38,47 @@ Image.Img = styled.img`
 	transition: opacity 1s ease;
 	visibility: ${props => props.loaded ? 'visible': 'hidden'};
 `
-Image.Error = styled.div``
+Image.Error = styled.div`
+	position: absolute;
+	top: 25%;
+	left: 50%;
+
+	transform: translate(-50%, -25%);
+
+	border: 1px solid red;
+	border-radius: 4px;
+	padding: 1rem;
+`
+export const Video = styled.iframe`
+	position: relative;
+
+	height: 100%;
+	width: 70%;
+`
+Video.Close_Button = styled.button`
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	z-index: 999;
+
+	border: 1px solid blue;
+	border-radius: 4px;
+
+	height: 30px;
+	width: 30px;
+
+	background-color: red;
+`
+
+Video.Container = styled.div`
+	position: relative;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 100%;
+	height: 100%;
+
+	margin: 5rem;
+`

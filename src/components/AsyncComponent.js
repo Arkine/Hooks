@@ -19,7 +19,7 @@ export default ({importComponent, fallback}) => (
 		}
 
 		render() {
-			const {fallback: Fallback} = this.props
+			const Fallback = fallback;
 			const C = this.state.component
 			const L = Fallback ? <Fallback {...this.props} /> : null
 

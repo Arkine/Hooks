@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 
 import Fetcher from '../../api/Nasa/Fetcher'
-import Loading from '../../components/Loading/BouncingText'
+import Loading from '../../components/Loading/ShimmeringText'
 import Info from '../../components/Info'
 import useWindowWidth from '../../components/hooks/useWindowWidth'
 
-import {Image} from './styled'
+import {Image, Video} from './styled'
 
 export default props => {
 	const [loaded, setLoaded] = useState(false)
@@ -15,20 +15,51 @@ export default props => {
 	const [width, setWindowWidth] = useWindowWidth()
 
 	function renderError() {
-		return <Image.Error>{error}</Image.Error>
+		console.log('RENDERING ERROR', error)
+		return <Image.Error>There was an error: {error || image.error}</Image.Error>
 	}
 
-	function renderImage() {
-		console.log('GOT IMAGE', image)
-		if (!image) {
-			return
+	function handleImageLoad() {
+		setLoaded(true)
+	}
+	
+	function renderInfo() {
+		if (!image) {git 
+			return null
 		}
 
-		if (error) {
+		if (error || image.error) {
 			return renderError()
 		}
 
-		return <Image.Img src={image.url} onLoad={() => setLoaded(true)} onError={setError} loaded={loaded} />
+		console.log('RENDERING Info continued');
+
+		return <Info info={image} loaded={loaded} />
+	}
+
+	function renderImage() {
+		if (!image || error) {
+			return null;
+		}
+		
+		if (image.media_type === 'video') {
+			return (
+				<Video.Container>
+					<Video 
+						src={image.url}
+						onLoad={handleImageLoad}
+						controls
+					/>
+				</Video.Container>
+			)
+		} 
+
+		return <Image.Img 
+			src={image.url}
+			onLoad={() => setLoaded(true)}
+			onError={e => setError('Image failed to load')}
+			loaded={loaded} 
+		/>
 	}
 
 	useEffect(async () => {
@@ -38,17 +69,15 @@ export default props => {
 
 				setImage(image)
 			} catch(e) {
-				setError(e.message)
+				setError(e || 'Could not load images...')
 				setLoaded(true)
 			}
 		}
-	})
-
-	console.log({props})
+	}, [props.active, error])
 
 	return (
 		<Image.Container width={width}>
-			{image && <Info info={image} loaded={loaded} />}
+			{renderInfo()}
 			<Image {...props} onClick={() => setImageView(!viewImage)} view={viewImage} loaded={loaded} active={props.active}>
 				{renderImage()}
 			</Image>
