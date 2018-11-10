@@ -70,7 +70,7 @@ export default props => {
 				setLoaded(true)
 			}
 		}
-	}, [props.active, error])
+	}, [props.active, error, image])
 
 	return (
 		<Image.Container width={width}>
