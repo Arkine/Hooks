@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import Fetcher from '../../api/nasa/Fetcher'
+import Fetcher from '../../api/Nasa/Fetcher'
 import Loading from '../../components/Loading/ShimmeringText'
 import Info from '../../components/Info'
 import useWindowWidth from '../../components/hooks/useWindowWidth'
@@ -21,7 +21,7 @@ export default props => {
 	function handleImageLoad() {
 		setLoaded(true)
 	}
-	
+
 	function renderInfo() {
 		if (!image) {
 			return null
@@ -39,24 +39,24 @@ export default props => {
 		if (!image || error || image.error) {
 			return null;
 		}
-		
+
 		if (image.media_type === 'video') {
 			return (
 				<Video.Container>
-					<Video 
+					<Video
 						src={image.url}
 						onLoad={handleImageLoad}
 						controls
 					/>
 				</Video.Container>
 			)
-		} 
+		}
 
-		return <Image.Img 
+		return <Image.Img
 			src={image.url}
 			onLoad={() => setLoaded(true)}
 			onError={e => setError('Image failed to load')}
-			loaded={loaded} 
+			loaded={loaded}
 		/>
 	}
 
